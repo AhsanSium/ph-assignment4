@@ -116,96 +116,80 @@
         </div>
     </main>
 
-    <!--Thank You-->
-    <!-- ...................................javaScript Bangla Niyom e (>_<) .......................................... -->
+    <!-- .............javaScript Bangla Niyom e (>_<) ..................-->
     <script>
-       document.getElementById('firstClassAdd').addEventListener('click', function(){
-           const firstClassInput = document.getElementById('firstClassInput');
-           firstClassInput.value++;
-          
-           var subTotal = document.getElementById('subTotal').innerText;
-           var  subTotalNumber = parseInt(subTotal);
-           document.getElementById('subTotal').innerText = ( subTotalNumber + 150);
-           
-           const vat = document.getElementById('vat').innerText;
-           var vatNumber = parseFloat(vat);
-           document.getElementById('vat').innerText = vatNumber + 15;
+    //........ Function to increase Element value by 1............... 
+    function addTicket(id) {
+        const idInput = document.getElementById(id);
+        idInput.value++;
+        }
+    //........ Function to Decrease Element value by 1............... 
+        function removeTicket(id) {
+            const idInput = document.getElementById(id);
+            idInput.value--;
+        }
+    //......... Function to ADD or Subtract a Value ...................
+        function handleValues(id, value, polarity) {
+           var idText = document.getElementById(id).innerText;
+           var  idTextNumber = parseInt(idText);
+           document.getElementById(id).innerText = ( idTextNumber + value*(polarity));
+        }
 
-           const total = document.getElementById('total').innerText;
-           var totalNumber = parseFloat(total);
-           document.getElementById('total').innerText = totalNumber + 165;
+       document.getElementById('firstClassAdd').addEventListener('click', function(){
+           
+           addTicket('firstClassInput');
+          
+           handleValues('subTotal', 150, 1);
+           
+           handleValues('vat', 15, 1);
+
+           handleValues('total', 165, 1);
        }); 
+
        document.getElementById('firstClassRemove').addEventListener('click', function(){
            if(document.getElementById('firstClassInput').value > 0){
 
-               const firstClassInput = document.getElementById('firstClassInput');
-               //console.log(firstClassInput);
-               firstClassInput.value--;
+               removeTicket('firstClassInput');
     
-               const subTotal = document.getElementById('subTotal').innerText;
-               var  subTotalNumber = parseInt(subTotal);
-               console.log(subTotalNumber);
-               document.getElementById('subTotal').innerText = ( ( subTotalNumber - 150 ));
+               handleValues('subTotal', 150, -1);
+              
+               handleValues('vat', 15, -1); 
     
-               const vat = document.getElementById('vat').innerText;
-               var vatNumber = parseFloat(vat);
-               document.getElementById('vat').innerText = vatNumber - 15;
-    
-               const total = document.getElementById('total').innerText;
-               var totalNumber = parseFloat(total);
-               document.getElementById('total').innerText = totalNumber - 165;
+               handleValues('total', 165, -1);
            }
        });
 
        document.getElementById('economyClassAdd').addEventListener('click', function(){
-           const economyClassInput = document.getElementById('economyClassInput');
-           //console.log(firstClassInput);
-           economyClassInput.value++;
-           //var firstClassInputUpdated = firstClassInput + 1;
 
-           var subTotal = document.getElementById('subTotal').innerText;
-           var  subTotalNumber = parseInt(subTotal);
-           document.getElementById('subTotal').innerText = ( subTotalNumber + 100);
-           
-           const vat = document.getElementById('vat').innerText;
-           var vatNumber = parseFloat(vat);
-           document.getElementById('vat').innerText = vatNumber + 10;
+            addTicket('economyClassInput');
+    
+            handleValues('subTotal', 100, +1);
+   
+            handleValues('vat', 10, +1); 
 
-           const total = document.getElementById('total').innerText;
-           var totalNumber = parseFloat(total);
-           document.getElementById('total').innerText = totalNumber + 110;
-       }); 
+            handleValues('total', 110, +1);
+       });
+        
        document.getElementById('economyClassRemove').addEventListener('click', function(){
            if(document.getElementById('economyClassInput').value > 0){
 
-               const economyClassInput = document.getElementById('economyClassInput');
-               //console.log(firstClassInput);
-               economyClassInput.value--;
+                removeTicket('economyClassInput');
+        
+                handleValues('subTotal', 100, -1);
     
-               const subTotal = document.getElementById('subTotal').innerText;
-               var  subTotalNumber = parseInt(subTotal);
-               console.log(subTotalNumber);
-               document.getElementById('subTotal').innerText = ( ( subTotalNumber - 100 ));
-    
-               const vat = document.getElementById('vat').innerText;
-               var vatNumber = parseFloat(vat);
-               document.getElementById('vat').innerText = vatNumber - 10;
-    
-               const total = document.getElementById('total').innerText;
-               var totalNumber = parseFloat(total);
-               document.getElementById('total').innerText = totalNumber - 110;
-           }
-          });
+                handleValues('vat', 10, -1); 
 
+                handleValues('total', 110, -1);
+            }
+          });
+    //...... Displaying Final Values to user.........................      
           document.getElementById('bookNowBtn').addEventListener('click', function(){
             alert(
                 'From: '+ document.getElementById('travelFrom').value + '\nTo : '+document.getElementById('travelTo').value + '\nDeparture : ' + 
                 document.getElementById('departureDate').value + '\nReturn : '+ 
                 document.getElementById('returnDate').value + '\nFirst Class : ' + document.getElementById('firstClassInput').value + '\nEconomy Class : ' + document.getElementById('economyClassInput').value + '\nSub Total : '+ document.getElementById('subTotal').innerText + '\nVat :' + document.getElementById('vat').innerText + '\nTotal Cost : ' + document.getElementById('total').innerText
             );
-          });
-    
-          
+          });          
     </script>
 </body>
 
