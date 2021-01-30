@@ -40,12 +40,12 @@
 
             <div class="inputs">
                 <div class="input-group">
-                    <label" for="">From</label>
-                    <input class="inp-style" type="text" name="" placeholder="Dhaka">
+                    <label for="">From</label>
+                    <input id="travelFrom" class="inp-style" type="text" name="" placeholder="Dhaka">
                 </div>
                 <div class="input-group">
                     <label" for="">To</label>
-                    <input class="inp-style" type="text" name="" placeholder="Chittagone">
+                    <input id="travelTo" class="inp-style" type="text" name="" placeholder="Chittagone">
                 </div>
             </div>
 
@@ -199,7 +199,7 @@
 
           document.getElementById('bookNowBtn').addEventListener('click', function(){
             alert(
-                'From: DHAKA \n' + 'To : Chittagong \n' + 'Departure :' + 
+                'From: '+ document.getElementById('travelFrom').value + '\nTo : '+document.getElementById('travelTo').value + '\nDeparture : ' + 
                 document.getElementById('departureDate').value + '\nReturn : '+ 
                 document.getElementById('returnDate').value + '\nFirst Class : ' + document.getElementById('firstClassInput').value + '\nEconomy Class : ' + document.getElementById('economyClassInput').value + '\nSub Total : '+ document.getElementById('subTotal').innerText + '\nVat :' + document.getElementById('vat').innerText + '\nTotal Cost : ' + document.getElementById('total').innerText
             );
